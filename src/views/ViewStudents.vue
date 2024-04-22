@@ -18,7 +18,14 @@
           <td>{{ student.firstName }}</td>
           <td>{{ student.lastName }}</td>
           <td>{{ student.email }}</td>
-          <td>{{ student.isActive ? "Active" : "Inactive" }}</td>
+          <td>
+            {{ student.isActive ? "Active" : "Inactive" }}
+            <button
+              v-if="student.isActive"
+              @click="deactivateStudent(student.id)">
+              Deactivate
+            </button>
+          </td>
           <td>
             <!-- View button -->
             <router-link :to="`/view-students/${student.id}/view`">
@@ -55,6 +62,24 @@ onMounted(async () => {
     console.error("Failed to fetch students:", error);
   }
 });
+
+async function deactivateStudent(studentId) {
+  try {
+    const response = await axios.put(
+      `http://localhost:8080/api/v1/spirit-directors/superfrog-students/${studentId}/deactivate`
+    );
+    if (response.data.flag) {
+      alert("SuperFrog Student deactivated successfully");
+      // Reload the data or update the local state to reflect the change
+      students.value = students.value.map((student) =>
+        student.id === studentId ? { ...student, isActive: false } : student
+      );
+    }
+  } catch (error) {
+    console.error("Failed to deactivate student:", error);
+    alert("Failed to deactivate student");
+  }
+}
 </script>
 
 <style>
