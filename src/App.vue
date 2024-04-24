@@ -5,7 +5,9 @@ import { RouterLink, RouterView } from "vue-router";
 <template>
   <div class="container">
     <aside class="sidebar">
-      <RouterLink to="/" class="home-link">Home</RouterLink>
+      <div class="links">
+        <RouterLink to="/" class="home-link">Home</RouterLink>
+      </div>
 
       <div class="tab-group spirit-director">
         <span class="tab-title">Spirit Director</span>
