@@ -11,6 +11,7 @@ import { RouterLink, RouterView } from "vue-router";
       <RouterLink to="/view-spirit-team-calendar"
         >View Spirit Team Calendar</RouterLink
       >
+      <RouterLink to="/generate-honorarium">Generate Honorarium</RouterLink>
     </nav>
   </header>
 

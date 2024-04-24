@@ -5,6 +5,7 @@ import ViewStudentDetails from "@/views/ViewStudentDetails.vue";
 import ModifyStudentDetails from "@/views/ModifyStudentDetails.vue";
 import FindStudents from "@/views/FindStudents.vue";
 import ViewSpiritTeamCalendar from "@/views/ViewSpiritTeamCalendar.vue";
+import GenerateHonorarium from "@/views/GenerateHonorarium.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,6 +43,11 @@ const router = createRouter({
       path: "/view-spirit-team-calendar",
       name: "viewspiritteamcalendar",
       component: ViewSpiritTeamCalendar,
+    },
+    {
+      path: "/generate-honorarium",
+      name: "generatehonorarium",
+      component: GenerateHonorarium,
     },
   ],
 });
