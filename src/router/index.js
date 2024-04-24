@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import ViewStudents from "@/views/ViewStudents.vue";
 import ViewStudentDetails from "@/views/ViewStudentDetails.vue";
-import ModifyStudentDetails from "@/views/ModifyStudentDetails.vue";
 import FindStudents from "@/views/FindStudents.vue";
 import ViewSpiritTeamCalendar from "@/views/ViewSpiritTeamCalendar.vue";
 import GenerateHonorarium from "@/views/GenerateHonorarium.vue";
@@ -26,12 +25,6 @@ const router = createRouter({
           path: ":id/view",
           name: "viewstudentdetails",
           component: ViewStudentDetails,
-          props: true,
-        },
-        {
-          path: ":id/modify",
-          name: "modifystudentdetails",
-          component: ModifyStudentDetails,
           props: true,
         },
       ],
