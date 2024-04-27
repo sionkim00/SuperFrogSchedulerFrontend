@@ -7,6 +7,7 @@ import ViewSpiritTeamCalendar from "@/views/ViewSpiritTeamCalendar.vue";
 import GenerateHonorarium from "@/views/GenerateHonorarium.vue";
 import GeneratePerformanceReport from "@/views/GeneratePerformanceReport.vue";
 import EditProfile from "@/views/EditProfile.vue";
+import RequestAppearance from "@/views/RequestAppearance.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,7 +18,7 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: "/view-students",
+      path: "/spirit-director/view-students",
       name: "viewstudents",
       component: ViewStudents,
       children: [
@@ -30,29 +31,34 @@ const router = createRouter({
       ],
     },
     {
-      path: "/find-students",
+      path: "/spirit-director/find-students",
       name: "findstudents",
       component: FindStudents,
     },
     {
-      path: "/view-spirit-team-calendar",
+      path: "/spirit-director/view-spirit-team-calendar",
       name: "viewspiritteamcalendar",
       component: ViewSpiritTeamCalendar,
     },
     {
-      path: "/generate-honorarium",
+      path: "/spirit-director/generate-honorarium",
       name: "generatehonorarium",
       component: GenerateHonorarium,
     },
     {
-      path: "/generate-performance-report",
+      path: "/spirit-director/generate-performance-report",
       name: "generateperformancereport",
       component: GeneratePerformanceReport,
     },
     {
-      path: "/edit-superfrog-profile",
+      path: "/superfrog-student/edit-superfrog-profile",
       name: "editsuperfrogprofile",
       component: EditProfile,
+    },
+    {
+      path: "c/request-appearance",
+      name: "requestappearance",
+      component: RequestAppearance,
     },
   ],
 });
