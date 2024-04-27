@@ -56,7 +56,7 @@ const router = createRouter({
       component: EditProfile,
     },
     {
-      path: "c/request-appearance",
+      path: "/customer/request-appearance",
       name: "requestappearance",
       component: RequestAppearance,
     },
