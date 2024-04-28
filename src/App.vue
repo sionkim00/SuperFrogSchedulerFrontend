@@ -34,7 +34,7 @@ import { RouterLink, RouterView } from "vue-router";
         <span class="tab-title">Appearance Request</span>
         <div class="links">
           <RouterLink to="/view-request">Create an Appearance Request</RouterLink>
-          <RouterLink to="/view-appearance-request">View All Appearance Requests</RouterLink>
+          <RouterLink to="/view-request">View All Appearance Requests</RouterLink>
 
   
         </div>
