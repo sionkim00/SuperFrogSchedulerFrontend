@@ -25,22 +25,22 @@
             <td>{{ request.id }}</td>
             <td>{{ request.firstName }}</td>
             <td>{{ request.lastName }}</td>
-            <td>{{ request.phoneNumer }}</td>
+            <td>{{ request.eventTitle }}</td>
             <td>{{ request.email }}</td>
             <td>{{ request.typeOfEvent }}</td>
-            <td>{{ request.eventTitle }}</td>
-            <td>{{ request.nameOfOrganization }}</td>
+            <td>{{ request.phone }}</td>
             <td>{{ request.eventAddress }}</td>
-            <td>{{ request.wheatherOnTcuCampusOrNot }}</td>
+            <td>{{ request.isOnCampus }}</td>
+            <td>{{ request.specialInstructions }}</td>
             <td>{{ request.expensesOrBenefits }}</td>
             <td>{{ request.otherOrgainizationsInvolved }}</td>
-            <td>{{ request.detailedDescription }}</td>
+            <td>{{ request.detailedEventDescription }}</td>
         
           </tr>
         </tbody>
       </table>
-  
-      <router-view />
+
+
     </div>
   </template>
   
@@ -53,7 +53,7 @@
   onMounted(async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/v1/customers/appearance-requests"
+        "http://localhost:8080/api/v1/appearance-requests"
       );
       if (response.data && response.data.data) {
         requests.value = response.data.data;
