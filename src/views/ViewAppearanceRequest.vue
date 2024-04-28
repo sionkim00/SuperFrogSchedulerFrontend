@@ -53,7 +53,7 @@
   onMounted(async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8080/api/v1/appearance-requests"
+        "http://localhost:8080/api/v1/customers/appearance-requests"
       );
       if (response.data && response.data.data) {
         requests.value = response.data.data;
