@@ -29,6 +29,19 @@ import { RouterLink, RouterView } from "vue-router";
             >Edit SuperFrog Profile</RouterLink
           >
         </div>
+
+        <div class="tab-group spirit-director">
+        <span class="tab-title">Appearance Request</span>
+        <div class="links">
+          <RouterLink to="/generate-honorarium">Create an Appearance Request</RouterLink>
+          <RouterLink to="/view-request">View All Appearance Requests</RouterLink>
+          <RouterLink to="/find-request">Find Appearance Request</RouterLink>
+          <RouterLink to="/generate-performance-report"
+            >Edit Appearance Request</RouterLink
+          >
+        </div>
+      </div>
+
       </div>
     </aside>
 
