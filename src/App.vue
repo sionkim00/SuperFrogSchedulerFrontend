@@ -30,15 +30,13 @@ import { RouterLink, RouterView } from "vue-router";
           >
         </div>
 
-        <div class="tab-group spirit-director">
+        <div class="tab-group appearance-request">
         <span class="tab-title">Appearance Request</span>
         <div class="links">
-          <RouterLink to="/generate-honorarium">Create an Appearance Request</RouterLink>
-          <RouterLink to="/view-request">View All Appearance Requests</RouterLink>
-          <RouterLink to="/find-request">Find Appearance Request</RouterLink>
-          <RouterLink to="/generate-performance-report"
-            >Edit Appearance Request</RouterLink
-          >
+          <RouterLink to="/view-request">Create an Appearance Request</RouterLink>
+          <RouterLink to="/view-appearance-request">View All Appearance Requests</RouterLink>
+
+  
         </div>
       </div>
 
