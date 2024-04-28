@@ -33,8 +33,10 @@ import { RouterLink, RouterView } from "vue-router";
         <div class="tab-group appearance-request">
         <span class="tab-title">Appearance Request</span>
         <div class="links">
-          <RouterLink to="/view-request">Create an Appearance Request</RouterLink>
+          <RouterLink to="/view-request">Request A SuperFrog Appearance</RouterLink>
           <RouterLink to="/view-request">View All Appearance Requests</RouterLink>
+          <RouterLink to="/view-request">Find All Appearance Requests</RouterLink>
+          
 
   
         </div>
