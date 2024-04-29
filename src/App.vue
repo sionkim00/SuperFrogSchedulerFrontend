@@ -5,27 +5,35 @@ import { RouterLink, RouterView } from "vue-router";
 <template>
   <div class="container">
     <aside class="sidebar">
-      <RouterLink to="/" class="home-link">Home</RouterLink>
+      <div class="links">
+        <RouterLink to="/" class="home-link">Home</RouterLink>
+      </div>
 
-      <div class="tab-group spirit-director">
+      <div class="tab-group">
         <span class="tab-title">Spirit Director</span>
         <div class="links">
-          <RouterLink to="/view-students">View All Students</RouterLink>
-          <RouterLink to="/find-students">Find Students</RouterLink>
-          <RouterLink to="/view-spirit-team-calendar"
+          <RouterLink to="/spirit-director/view-students"
+            >View All Students</RouterLink
+          >
+          <RouterLink to="/spirit-director/find-students"
+            >Find Students</RouterLink
+          >
+          <RouterLink to="/spirit-director/view-spirit-team-calendar"
             >View Spirit Team Calendar</RouterLink
           >
-          <RouterLink to="/generate-honorarium">Generate Honorarium</RouterLink>
-          <RouterLink to="/generate-performance-report"
+          <RouterLink to="/spirit-director/generate-honorarium"
+            >Generate Honorarium</RouterLink
+          >
+          <RouterLink to="/spirit-director/generate-performance-report"
             >Generate Performance Report</RouterLink
           >
         </div>
       </div>
 
-      <div class="tab-group superfrog-student">
+      <div class="tab-group">
         <span class="tab-title">SuperFrog Student</span>
         <div class="links">
-          <RouterLink to="/edit-superfrog-profile"
+          <RouterLink to="/superfrog-student/edit-superfrog-profile"
             >Edit SuperFrog Profile</RouterLink
           >
         </div>
@@ -42,6 +50,15 @@ import { RouterLink, RouterView } from "vue-router";
         </div>
       </div>
 
+      </div>
+
+      <div class="tab-group">
+        <span class="tab-title">Customer</span>
+        <div class="links">
+          <RouterLink to="/customer/request-appearance"
+            >Request Appearance</RouterLink
+          >
+        </div>
       </div>
     </aside>
 
