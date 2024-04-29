@@ -44,9 +44,6 @@ import { RouterLink, RouterView } from "vue-router";
           <RouterLink to="/view-request">Request A SuperFrog Appearance</RouterLink>
           <RouterLink to="/view-request">View All Appearance Requests</RouterLink>
           <RouterLink to="/view-request">Find All Appearance Requests</RouterLink>
-          
-
-  
         </div>
       </div>
 
@@ -57,6 +54,9 @@ import { RouterLink, RouterView } from "vue-router";
         <div class="links">
           <RouterLink to="/customer/request-appearance"
             >Request Appearance</RouterLink
+          >
+          <RouterLink to="/customer/edit-appearance"
+            >Edit Appearance</RouterLink
           >
         </div>
       </div>
