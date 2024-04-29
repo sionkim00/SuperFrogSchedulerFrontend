@@ -8,7 +8,7 @@ import GenerateHonorarium from "@/views/GenerateHonorarium.vue";
 import GeneratePerformanceReport from "@/views/GeneratePerformanceReport.vue";
 import EditProfile from "@/views/EditProfile.vue";
 import RequestAppearance from "@/views/RequestAppearance.vue";
-import EditAppearanceRequestVue from "@/views/EditAppearanceRequest.vue";
+import EditAppearanceRequest from "@/views/EditAppearanceRequest.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -63,8 +63,8 @@ const router = createRouter({
     },
     {
       path: "/customer/edit-appearance",
-      name: "editappearance",
-      component: EditAppearance,
+      name: "editappearancerequest",
+      component: EditAppearanceRequest,
     },
   ],
 });

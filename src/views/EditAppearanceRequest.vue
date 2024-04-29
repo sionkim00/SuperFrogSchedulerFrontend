@@ -36,12 +36,24 @@
             <td><input v-model="appearanceRequestDetails.eventAddress" /></td>
             <td><input v-model="appearanceRequestDetails.typeOfEvent" /></td>
             <td><input v-model="appearanceRequestDetails.eventTitle" /></td>
-            <td><input v-model="appearanceRequestDetails.otherOrgainizationsInvolved" /></td>
-             <td><input v-model="appearanceRequestDetails.nameOfOrg" /></td>
-              <td><input v-model="appearanceRequestDetails.isOnCampus" /></td>
-               <td><input v-model="appearanceRequestDetails.specialInstructions" /></td>
-                <td><input v-model="appearanceRequestDetails.expensesOrBenefits" /></td>
-                 <td><input v-model="appearanceRequestDetails.detailedEventDescription" /></td>
+            <td>
+              <input
+                v-model="
+                  appearanceRequestDetails.otherOrgainizationsInvolved
+                " />
+            </td>
+            <td><input v-model="appearanceRequestDetails.nameOfOrg" /></td>
+            <td><input v-model="appearanceRequestDetails.isOnCampus" /></td>
+            <td>
+              <input v-model="appearanceRequestDetails.specialInstructions" />
+            </td>
+            <td>
+              <input v-model="appearanceRequestDetails.expensesOrBenefits" />
+            </td>
+            <td>
+              <input
+                v-model="appearanceRequestDetails.detailedEventDescription" />
+            </td>
           </tr>
         </tbody>
       </table>
@@ -61,7 +73,7 @@ const fetchStudentDetails = async () => {
   if (!studentId.value) return;
   try {
     const response = await axios.get(
-      `http://localhost:8080/api/v1/customers/appearance-request/${appearanceRequest{studentId.value}/details`
+      `http://localhost:8080/api/v1/customers/appearance-request/${studentId.value}/details`
     );
     if (response.data.flag && response.data.data) {
       studentDetails.value = response.data.data;
@@ -88,13 +100,14 @@ const updateAppearanceRequestDetails = async () => {
         eventTitle: appearanceRequestDetails.value.eventTitle,
         eventAddress: appearanceRequestDetails.value.eventAddress,
         typeOfEvent: appearanceRequestDetails.valie.typeOfEvent,
-        otherOrgainizationsInvolved: appearanceRequestDetails.value.otherOrgainizationsInvolved,
+        otherOrgainizationsInvolved:
+          appearanceRequestDetails.value.otherOrgainizationsInvolved,
         nameOfOrg: appearanceRequestDetails.value.nameOfOrg,
         isOnCampus: appearanceRequestDetails.value.isOnCampus,
         specialInstructions: appearanceRequestDetails.value.specialInstructions,
         expensesOrBenefits: appearanceRequestDetails.value.expensesOrBenefits,
-        detailedEventDescription: appearanceRequestDetails.value.detailedEventDescription
-
+        detailedEventDescription:
+          appearanceRequestDetails.value.detailedEventDescription,
       }
     );
     if (response.data.flag) {
