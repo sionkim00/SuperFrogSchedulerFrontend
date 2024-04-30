@@ -45,7 +45,9 @@ const fetchStudentDetails = async () => {
   if (!studentId.value) return;
   try {
     const response = await axios.get(
-      `http://localhost:8080/api/v1/spirit-directors/superfrog-students/${studentId.value}/details`
+      `${import.meta.env.VITE_API_URL}/spirit-directors/superfrog-students/${
+        studentId.value
+      }/details`
     );
     if (response.data.flag && response.data.data) {
       studentDetails.value = response.data.data;
@@ -62,7 +64,7 @@ const updateStudentDetails = async () => {
   if (!studentDetails.value) return;
   try {
     const response = await axios.put(
-      `http://localhost:8080/api/v1/superfrog-students/${studentId.value}`,
+      `${import.meta.env.VITE_API_URL}/superfrog-students/${studentId.value}`,
       {
         firstName: studentDetails.value.firstName,
         lastName: studentDetails.value.lastName,

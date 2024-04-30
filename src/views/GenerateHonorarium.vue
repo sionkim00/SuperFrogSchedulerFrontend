@@ -59,7 +59,9 @@ async function submitHonorarium() {
     const formattedEndDate = formatDate(honorariumData.value.endDate);
 
     const response = await axios.post(
-      `http://localhost:8080/api/v1/spirit-directors/create-honorarium/${honorariumData.value.studentId}`,
+      `${import.meta.env.VITE_API_URL}/spirit-directors/create-honorarium/${
+        honorariumData.value.studentId
+      }`,
       {
         startDate: formattedStartDate,
         endDate: formattedEndDate,

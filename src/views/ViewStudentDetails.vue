@@ -91,7 +91,9 @@ const studentDetails = ref({
 const fetchStudentDetails = async (id) => {
   try {
     const response = await axios.get(
-      `http://localhost:8080/api/v1/spirit-directors/superfrog-students/${id}/details`
+      `${
+        import.meta.env.VITE_API_URL
+      }/spirit-directors/superfrog-students/${id}/details`
     );
     if (response.data && response.data.data) {
       studentDetails.value = {

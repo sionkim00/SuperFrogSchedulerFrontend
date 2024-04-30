@@ -60,7 +60,11 @@ async function submitReport() {
 
   try {
     const response = await axios.post(
-      `http://localhost:8080/api/v1/spirit-directors/create-performance-report/${reportData.value.studentId}`,
+      `${
+        import.meta.env.VITE_API_URL
+      }/spirit-directors/create-performance-report/${
+        reportData.value.studentId
+      }`,
       {
         startDate: formattedStartDate,
         endDate: formattedEndDate,
