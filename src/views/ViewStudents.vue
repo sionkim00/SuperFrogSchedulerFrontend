@@ -53,7 +53,7 @@ const students = ref([]);
 onMounted(async () => {
   try {
     const response = await axios.get(
-      "http://localhost:8080/api/v1/spirit-directors/superfrog-students"
+      `${import.meta.env.VITE_API_URL}/spirit-directors/superfrog-students`
     );
     if (response.data && response.data.data) {
       students.value = response.data.data;
@@ -66,7 +66,9 @@ onMounted(async () => {
 async function deactivateStudent(studentId) {
   try {
     const response = await axios.put(
-      `http://localhost:8080/api/v1/spirit-directors/superfrog-students/${studentId}/deactivate`
+      `${
+        import.meta.env.VITE_API_URL
+      }/spirit-directors/superfrog-students/${studentId}/deactivate`
     );
     if (response.data.flag) {
       alert("SuperFrog Student deactivated successfully");

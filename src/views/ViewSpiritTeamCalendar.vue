@@ -90,7 +90,7 @@ onMounted(async () => {
 async function fetchEvents() {
   try {
     const response = await axios.get(
-      "http://localhost:8080/api/v1/spirit-directors/events"
+      `${import.meta.env.VITE_API_URL}/spirit-directors/events`
     );
     events.value = response.data.data;
   } catch (error) {
@@ -114,7 +114,7 @@ async function createEvent() {
       recurrenceEndDate: formatDate(newEvent.value.recurrenceEndDate),
     };
     const response = await axios.post(
-      "http://localhost:8080/api/v1/spirit-directors/events",
+      `${import.meta.env.VITE_API_URL}/spirit-directors/events`,
       formattedEvent
     );
     events.value.push(response.data.data);
@@ -135,7 +135,7 @@ async function editEvent(event) {
   if (updatedTitle) {
     try {
       const response = await axios.put(
-        `http://localhost:8080/api/v1/spirit-directors/events/${event.id}`,
+        `${import.meta.env.VITE_API_URL}/spirit-directors/events/${event.id}`,
         { title: updatedTitle }
       );
       event.title = response.data.data.title;
@@ -148,7 +148,7 @@ async function editEvent(event) {
 async function deleteEvent(id) {
   try {
     await axios.delete(
-      `http://localhost:8080/api/v1/spirit-directors/events/${id}`
+      `${import.meta.env.VITE_API_URL}/spirit-directors/events/${id}`
     );
     events.value = events.value.filter((event) => event.id !== id);
   } catch (error) {
