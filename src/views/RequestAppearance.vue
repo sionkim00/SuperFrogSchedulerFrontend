@@ -90,10 +90,29 @@ export default {
       },
       showPopup: false,
       popupMessage: "",
+      requestId: null, // Store generated ID
     };
   },
   methods: {
+    generateRandomId() {
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      let randomId = "";
+      for (let i = 0; i < 8; i++) {
+        randomId += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      return randomId;
+    },
     submitForm() {
+      // Generate a random ID for the request
+      const requestId = this.generateRandomId();
+
+      // Assign the generated ID to the form data
+      this.form.requestId = requestId;
+
+      // Store the generated ID
+      this.requestId = requestId;
+
+      // Submit the form data
       axios
         .post(
           `${
@@ -104,7 +123,7 @@ export default {
         .then((response) => {
           if (response.data.flag && response.data.code === 200) {
             this.showPopupMessage(
-              "SuperFrog appearance request created successfully."
+              "SuperFrog appearance request created successfully. Your request ID is: " + requestId
             );
           } else {
             this.showPopupMessage(

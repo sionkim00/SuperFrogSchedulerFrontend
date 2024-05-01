@@ -45,6 +45,9 @@ import { RouterLink, RouterView } from "vue-router";
           <RouterLink to="/customer/request-appearance"
             >Request Appearance</RouterLink
           >
+          <RouterLink to="/customer/edit-appearance"
+            >Edit Appearance</RouterLink
+          >
         </div>
       </div>
     </aside>

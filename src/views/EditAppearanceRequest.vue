@@ -1,162 +1,99 @@
 <template>
   <div>
-    <h1>Edit Appearance Request</h1>
-    <input
-      v-model="requestId"
-      placeholder="Enter Appearance Request ID"
-      @change="fetchAppreanceRequestDetails" />
-    <button @click="fetchAppearanceRequestDetails">Load Details</button>
+    <h1>Manage Appearance Request</h1>
+    <form @submit.prevent="fetchAppearanceRequest">
+      <input v-model="appearanceRequestId" placeholder="Appearance Request ID" />
+      <button type="submit">Fetch Request</button>
+    </form>
 
-    <div v-if="appearanceRequestDetails">
+    <div v-if="appearanceRequest">
       <h2>Appearance Request Details</h2>
-      <table border="1">
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone Number</th>
-            <th>Email</th>
-            <th>Type of Event</th>
-            <th>Event Title</th>
-            <th>Name of Orgainization</th>
-            <th>Event Address</th>
-            <th>Wheather on TCU campus or not</th>
-            <th>Speacial Instructions</th>
-            <th>Any Expenses of Benefits</th>
-            <th>Any Outside Orgainizations Involved</th>
-            <th>Detailed Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><input v-model="appearanceRequestDetails.firstName" /></td>
-            <td><input v-model="appearanceRequestDetails.lastName" /></td>
-            <td><input v-model="appearanceRequestDetails.email" /></td>
-            <td><input v-model="appearanceRequestDetails.phone" /></td>
-            <td><input v-model="appearanceRequestDetails.eventAddress" /></td>
-            <td><input v-model="appearanceRequestDetails.typeOfEvent" /></td>
-            <td><input v-model="appearanceRequestDetails.eventTitle" /></td>
-            <td>
-              <input
-                v-model="
-                  appearanceRequestDetails.otherOrgainizationsInvolved
-                " />
-            </td>
-            <td><input v-model="appearanceRequestDetails.nameOfOrg" /></td>
-            <td><input v-model="appearanceRequestDetails.isOnCampus" /></td>
-            <td>
-              <input v-model="appearanceRequestDetails.specialInstructions" />
-            </td>
-            <td>
-              <input v-model="appearanceRequestDetails.expensesOrBenefits" />
-            </td>
-            <td>
-              <input
-                v-model="appearanceRequestDetails.detailedEventDescription" />
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <button @click="updateAppearanceRequestDetails">Update Details</button>
+      <form @submit.prevent="updateAppearanceRequest">
+        <label for="firstName">First Name</label>
+        <input v-model="appearanceRequest.firstName" id="firstName" />
+        <label for="lastName">Last Name</label>
+        <input v-model="appearanceRequest.lastName" id="lastName" />
+        <label for="email">Email</label>
+        <input v-model="appearanceRequest.email" id="email" />
+        <label for="phone">Phone</label>
+        <input v-model="appearanceRequest.phone" id="phone" />
+        <label for="typeOfEvent">Type of Event</label>
+        <input v-model="appearanceRequest.typeOfEvent" id="typeOfEvent" />
+        <label for="eventTitle">Event Title</label>
+        <input v-model="appearanceRequest.eventTitle" id="eventTitle" />
+        <label for="eventAddress">Event Address</label>
+        <input v-model="appearanceRequest.eventAddress" id="eventAddress" />
+        <label for="isOnCampus">Is on Campus</label>
+        <input v-model="appearanceRequest.isOnCampus" id="isOnCampus" />
+        <label for="specialInstructions">Special Instructions</label>
+        <input v-model="appearanceRequest.specialInstructions" id="specialInstructions" />
+        <label for="expensesOrBenefits">Expenses or Benefits</label>
+        <input v-model="appearanceRequest.expensesOrBenefits" id="expensesOrBenefits" />
+        <label for="otherOrganizationsInvolved">Other Organizations Involved</label>
+        <input v-model="appearanceRequest.otherOrganizationsInvolved" id="otherOrganizationsInvolved" />
+        <label for="detailedEventDescription">Detailed Event Description</label>
+        <input v-model="appearanceRequest.detailedEventDescription" id="detailedEventDescription" />
+        <button type="submit">Update Request</button>
+        <button @click="cancelRequest">Cancel Request</button>
+      </form>
+    </div>
+    <div v-else>
+      <p>No Appearance Request found. Please enter a valid Appearance Request ID.</p>
     </div>
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import axios from "axios";
 
-const studentId = ref("");
-const studentDetails = ref(null);
+const appearanceRequestId = ref("");
+const appearanceRequest = ref(null);
 
-const fetchStudentDetails = async () => {
-  if (!studentId.value) return;
+async function fetchAppearanceRequest() {
   try {
-    const response = await axios.get(
-      `${import.meta.env.VITE_API_URL}/customers/appearance-request/${
-        studentId.value
-      }/details`
-    );
-    if (response.data.flag && response.data.data) {
-      studentDetails.value = response.data.data;
-    } else {
-      alert("Failed to load details.");
-    }
+    const response = await axios.get(`${import.meta.env.VITE_API_URL}/appearance-requests/${appearanceRequestId.value}`);
+    appearanceRequest.value = response.data.data;
   } catch (error) {
-    console.error("Error fetching appearanceRequest details:", error);
-    alert("Error fetching details. Check console for more information.");
+    console.error("Failed to fetch appearance request:", error);
+    appearanceRequest.value = null;
   }
-};
+}
 
-const updateAppearanceRequestDetails = async () => {
-  if (!appearanceRequestDetails.value) return;
+async function updateAppearanceRequest() {
   try {
-    const response = await axios.put(
-      `${import.meta.env.VITE_API_URL}/appearance-requests/${
-        appearanceRequestId.value
-      }`,
-      {
-        firstName: appearanceRequestDetails.value.firstName,
-        lastName: appearanceRequestDetails.value.lastName,
-        email: appearanceRequestDetails.value.email,
-        phone: appearanceRequestDetails.value.phone,
-        address: appearanceRequestDetails.value.address,
-        eventTitle: appearanceRequestDetails.value.eventTitle,
-        eventAddress: appearanceRequestDetails.value.eventAddress,
-        typeOfEvent: appearanceRequestDetails.valie.typeOfEvent,
-        otherOrgainizationsInvolved:
-          appearanceRequestDetails.value.otherOrgainizationsInvolved,
-        nameOfOrg: appearanceRequestDetails.value.nameOfOrg,
-        isOnCampus: appearanceRequestDetails.value.isOnCampus,
-        specialInstructions: appearanceRequestDetails.value.specialInstructions,
-        expensesOrBenefits: appearanceRequestDetails.value.expensesOrBenefits,
-        detailedEventDescription:
-          appearanceRequestDetails.value.detailedEventDescription,
-      }
-    );
-    if (response.data.flag) {
-      alert("Details updated successfully!");
-    } else {
-      alert("Failed to update details.");
-    }
+    const response = await axios.put(`${import.meta.env.VITE_API_URL}/appearance-requests/${appearanceRequestId.value}`, appearanceRequest.value);
+    console.log("Request updated successfully:", response.data);
+    // Optionally, you can fetch the updated appearance request again
+    // fetchAppearanceRequest();
   } catch (error) {
-    console.error("Error updating appearanceReques details:", error);
-    alert("Error updating details. Check console for more information.");
+    console.error("Failed to update appearance request:", error);
   }
-};
+}
+
+async function cancelRequest() {
+  try {
+    // Implement cancel request functionality, for example:
+    // const response = await axios.delete(`${import.meta.env.VITE_API_URL}/appearance-requests/${appearanceRequestId.value}`);
+    // console.log("Request canceled successfully:", response.data);
+  } catch (error) {
+    console.error("Failed to cancel appearance request:", error);
+  }
+}
+
+onMounted(() => {
+  // If appearanceRequestId is provided (e.g., from a previously generated ID), fetch the appearance request details
+  if (appearanceRequestId.value) {
+    fetchAppearanceRequest();
+  }
+});
 </script>
 
 <style>
-/* Styles for your tables and inputs */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-th,
-td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-input {
-  width: 100%;
-  padding: 6px 10px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
+/* Add your styles here */
+input,
+select,
 button {
-  background-color: #4caf50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #45a049;
+  margin: 5px;
 }
 </style>
