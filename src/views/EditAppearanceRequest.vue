@@ -66,6 +66,7 @@ async function updateAppearanceRequest() {
     console.log("Request updated successfully:", response.data);
     // Optionally, you can fetch the updated appearance request again
     // fetchAppearanceRequest();
+    window.alert("Appearance request successfully updated.");
   } catch (error) {
     console.error("Failed to update appearance request:", error);
   }
@@ -73,9 +74,10 @@ async function updateAppearanceRequest() {
 
 async function cancelRequest() {
   try {
-    // Implement cancel request functionality, for example:
-    // const response = await axios.delete(`${import.meta.env.VITE_API_URL}/appearance-requests/${appearanceRequestId.value}`);
-    // console.log("Request canceled successfully:", response.data);
+    const response = await axios.put(`${import.meta.env.VITE_API_URL}/appearance-requests/${appearanceRequestId.value}/cancel`);
+    console.log("Request canceled successfully:", response.data);
+    // Optionally, you can clear appearanceRequest.value or perform other actions upon successful cancellation
+    window.alert("Appearance request successfully canceled.");
   } catch (error) {
     console.error("Failed to cancel appearance request:", error);
   }
