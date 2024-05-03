@@ -9,6 +9,10 @@ import GeneratePerformanceReport from "@/views/GeneratePerformanceReport.vue";
 import EditProfile from "@/views/EditProfile.vue";
 import RequestAppearance from "@/views/RequestAppearance.vue";
 import EditAppearanceRequest from "@/views/EditAppearanceRequest.vue";
+import FindAppearanceRequest from "@/views/FindAppearanceRequest.vue";
+import ApproveOrRejectAppearance from "@/views/ApproveOrRejectAppearance.vue";
+import AllAppReq from "@/views/AllAppReq.vue";
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -65,6 +69,21 @@ const router = createRouter({
       path: "/customer/edit-appearance",
       name: "editappearancerequest",
       component: EditAppearanceRequest,
+    },
+    {
+      path: "/customer/find-appearance",
+      name: "findappearancerequest",
+      component: FindAppearanceRequest,
+    },
+    {
+      path: "/spirit-director/approve-or-reject",
+      name: "approveorrejectappearance",
+      component: ApproveOrRejectAppearance,
+    },
+    {
+      path: "/superfrog-student/all-appearance-request",
+      name: "allappreq",
+      component: AllAppReq,
     },
   ],
 });
