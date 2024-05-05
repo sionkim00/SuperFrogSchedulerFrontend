@@ -27,6 +27,9 @@ import { RouterLink, RouterView } from "vue-router";
           <RouterLink to="/spirit-director/generate-performance-report"
             >Generate Performance Report</RouterLink
           >
+          <RouterLink to="/spirit-director/approve-or-reject"
+            >Approve or Reject Request</RouterLink
+          >
         </div>
       </div>
 
@@ -35,6 +38,9 @@ import { RouterLink, RouterView } from "vue-router";
         <div class="links">
           <RouterLink to="/superfrog-student/edit-superfrog-profile"
             >Edit SuperFrog Profile</RouterLink
+          >
+          <RouterLink to="/superfrog-student/all-app-req"
+            >View All Appearance Requests</RouterLink
           >
         </div>
       </div>
@@ -48,6 +54,10 @@ import { RouterLink, RouterView } from "vue-router";
           <RouterLink to="/customer/edit-appearance"
             >Edit Appearance</RouterLink
           >
+          <RouterLink to="/customer/find-appearance"
+            >Find Appearance Request</RouterLink
+          >
+        
         </div>
       </div>
     </aside>
